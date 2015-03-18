@@ -1,2 +1,22 @@
 
 *.class
+
+shared-impl/target/surefire-reports/ch.ethz.globis.isk.service.MongoPublicationServiceTest.txt
+
+shared-impl/target/surefire-reports/TEST-ch.ethz.globis.isk.service.MongoPublicationServiceTest.xml
+
+shared-impl/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+
+shared-impl/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+
+shared-impl/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+
+shared-impl/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+
+api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+
+api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+
+api/target/maven-archiver/pom.properties
+
+api/target/api-1.0.0.jar
