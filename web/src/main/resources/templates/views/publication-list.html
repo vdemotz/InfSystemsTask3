@@ -171,7 +171,11 @@
                 }],
                 formatter: function (items) {
                     $.each(items, function (index, item) {
-                        item.ee = '<a href="' + item.ee + '">Read online</a>';
+                        if (item.ee == null) {
+                            item.ee = "No Electronic Edition";
+                        } else {
+                            item.ee = '<a href="' + item.ee + '">Read online</a>';
+                        }
                         item.id = '<a href="' + window.location.origin + '/publications/' + encodeURIComponent(item.id) + '">View more</a>';
                     });
                 }

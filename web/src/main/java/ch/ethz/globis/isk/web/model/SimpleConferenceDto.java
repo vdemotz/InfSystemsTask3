@@ -17,7 +17,8 @@ public class SimpleConferenceDto extends DTO<Conference> {
         this.name = name;
     }
 
-    public SimpleConferenceDto() { }
+    public SimpleConferenceDto() {
+    }
 
     public SimpleConferenceDto(Conference entity) {
         this.id = EncodingUtils.encode(entity.getId());

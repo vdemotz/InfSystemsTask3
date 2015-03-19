@@ -4,7 +4,7 @@ import ch.ethz.globis.isk.config.PersistenceConfig;
 import ch.ethz.globis.isk.parser.DBLPParser;
 import ch.ethz.globis.isk.parser.NonXMLDBLPParser;
 import ch.ethz.globis.isk.parser.processor.EntityCache;
-import ch.ethz.globis.isk.config.ServiceConfig;
+import ch.ethz.globis.isk.persistence.ServiceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

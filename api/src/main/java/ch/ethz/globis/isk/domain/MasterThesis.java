@@ -1,16 +1,12 @@
 package ch.ethz.globis.isk.domain;
 
-public class MasterThesis extends Publication {
+/**
+ * Represents a Master Thesis.
+ */
+public interface MasterThesis extends Publication {
 
-    private School school;
+    public School getSchool();
 
-    public MasterThesis() { }
+    public void setSchool(School school);
 
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
-    }
 }

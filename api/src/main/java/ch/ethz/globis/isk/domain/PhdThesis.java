@@ -1,87 +1,32 @@
 package ch.ethz.globis.isk.domain;
 
-public class PhdThesis extends Publication {
+/**
+ * Represents a PHD Thesis.
+ */
+public interface PhdThesis extends Publication {
 
-    private Integer month;
-    private String note;
-    private Integer number;
-    private String isbn;
-    private Publisher publisher;
-    private School school;
+    public String getIsbn();
 
-    public PhdThesis() { }
+    public void setIsbn(String isbn);
 
-    public String getIsbn() {
-        return isbn;
-    }
+    public Integer getMonth();
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+    public void setMonth(Integer month);
 
-    public Integer getMonth() {
-        return month;
-    }
+    public String getNote();
 
-    public void setMonth(Integer month) {
-        this.month = month;
-    }
+    public void setNote(String note);
 
-    public String getNote() {
-        return note;
-    }
+    public Integer getNumber();
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+    public void setNumber(Integer number);
 
-    public Integer getNumber() {
-        return number;
-    }
+    public Publisher getPublisher();
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
+    public void setPublisher(Publisher publisher);
 
-    public Publisher getPublisher() {
-        return publisher;
-    }
+    public School getSchool();
 
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
+    public void setSchool(School school);
 
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PhdThesis)) return false;
-        if (!super.equals(o)) return false;
-
-        PhdThesis that = (PhdThesis) o;
-
-        if (getIsbn() != null ? !getIsbn().equals(that.getIsbn()) : that.getIsbn() != null) return false;
-        if (getMonth() != null ? !getMonth().equals(that.getMonth()) : that.getMonth() != null) return false;
-        if (getNote() != null ? !getNote().equals(that.getNote()) : that.getNote() != null) return false;
-        if (getNumber() != null ? !getNumber().equals(that.getNumber()) : that.getNumber() != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (getMonth() != null ? getMonth().hashCode() : 0);
-        result = 31 * result + (getNote() != null ? getNote().hashCode() : 0);
-        result = 31 * result + (getNumber() != null ? getNumber().hashCode() : 0);
-        result = 31 * result + (getIsbn() != null ? getIsbn().hashCode() : 0);
-        return result;
-    }
 }

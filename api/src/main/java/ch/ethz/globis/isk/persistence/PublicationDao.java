@@ -1,7 +1,6 @@
 package ch.ethz.globis.isk.persistence;
 
 import ch.ethz.globis.isk.domain.Publication;
-
 import java.util.List;
 
 public interface PublicationDao extends Dao<String, Publication> {

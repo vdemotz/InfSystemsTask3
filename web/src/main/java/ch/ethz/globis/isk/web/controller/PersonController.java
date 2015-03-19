@@ -13,18 +13,14 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/people")
-public class PersonController extends TemplateController<String, Person>{
+public class PersonController extends TemplateController<String, Person> {
 
     private static final Log LOG = LogFactory.getLog(PersonController.class);
 
@@ -63,27 +59,18 @@ public class PersonController extends TemplateController<String, Person>{
     protected void addAdditionalDataAboutEntity(Model model, Person entity) {
         String entityId = entity.getId();
         tm.beginTransaction();
-        List<DTO<Publication>> authoredPublicationDtos =
-                DTOs.create(publicationService.findByAuthorIdOrderedByYear(entityId), PublicationDto.class);
-        List<DTO<Publication>> editedPublicationDtos =
-                DTOs.create(publicationService.findByEditorIdOrderedByYear(entityId), PublicationDto.class);
+        List<DTO<Publication>> authoredPublicationDtos = DTOs.create(publicationService.findByAuthorIdOrderedByYear(entityId), PublicationDto.class);
+        List<DTO<Publication>> editedPublicationDtos = DTOs.create(publicationService.findByEditorIdOrderedByYear(entityId), PublicationDto.class);
         tm.commitTransaction();
         model.addAttribute("authoredPublications", authoredPublicationDtos);
         model.addAttribute("editedPublications", editedPublicationDtos);
     }
 
     @ResponseBody
-    @RequestMapping(value = {"/ajax"}, method = RequestMethod.GET)
-    public PageResponseDto<DTO<Person>> getPersonByAjaxJSON(
-                          HttpSession session,
-                          @RequestParam(value = "search", required = false) String search,
-                          @RequestParam(value = "start", defaultValue = "0") Integer start,
-                          @RequestParam(value = "size", defaultValue = "20") Integer size,
-                          @RequestParam(value = "sortProperty", required = false) String sortField,
-                          @RequestParam(value = "sortDirection", required = false) String sortDirection) {
+    @RequestMapping(value = { "/ajax" }, method = RequestMethod.GET)
+    public PageResponseDto<DTO<Person>> getPersonByAjaxJSON(HttpSession session, @RequestParam(value = "search", required = false) String search, @RequestParam(value = "start", defaultValue = "0") Integer start, @RequestParam(value = "size", defaultValue = "20") Integer size, @RequestParam(value = "sortProperty", required = false) String sortField, @RequestParam(value = "sortDirection", required = false) String sortDirection) {
         List<Person> entities;
         long count;
-
         if (sortField == null) {
             sortField = "name";
             sortDirection = "asc";
@@ -110,8 +97,7 @@ public class PersonController extends TemplateController<String, Person>{
             }
         }
         tm.commitTransaction();
-        PageResponseDto<DTO<Person>> pageResponse =
-                new PageResponseDto<>(DTOs.create(entities, SimplePersonDto.class), count);
+        PageResponseDto<DTO<Person>> pageResponse = new PageResponseDto<>(DTOs.create(entities, SimplePersonDto.class), count);
         return pageResponse;
     }
 }

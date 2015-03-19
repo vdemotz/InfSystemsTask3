@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +60,6 @@ public class PublisherController extends TemplateController<String, Publisher> {
         List<Publication> publications = publicationService.findByPublisherOrderedByYear(publisherId);
         List<DTO<Publication>> publicationDtoList = DTOs.create(publications, PublicationDto.class);
         tm.commitTransaction();
-
         model.addAttribute("publications", publicationDtoList);
         LOG.info("Showing " + publicationDtoList.size() + " publications for " + entity.getName());
     }
@@ -72,22 +70,14 @@ public class PublisherController extends TemplateController<String, Publisher> {
     }
 
     @ResponseBody
-    @RequestMapping(value = {"/ajax"}, method = RequestMethod.GET)
-    public PageResponseDto<DTO<Publisher>> getSeriesByAjaxJSON(
-            HttpSession session,
-            @RequestParam(value = "search", required = false) String search,
-            @RequestParam(value = "start", defaultValue = "0") Integer start,
-            @RequestParam(value = "size", defaultValue = "20") Integer size,
-            @RequestParam(value = "sortProperty", required = false) String sortField,
-            @RequestParam(value = "sortDirection", required = false) String sortDirection) {
+    @RequestMapping(value = { "/ajax" }, method = RequestMethod.GET)
+    public PageResponseDto<DTO<Publisher>> getSeriesByAjaxJSON(HttpSession session, @RequestParam(value = "search", required = false) String search, @RequestParam(value = "start", defaultValue = "0") Integer start, @RequestParam(value = "size", defaultValue = "20") Integer size, @RequestParam(value = "sortProperty", required = false) String sortField, @RequestParam(value = "sortDirection", required = false) String sortDirection) {
         List<Publisher> entities = null;
         long count;
-
         if (sortField == null) {
             sortField = "name";
             sortDirection = "asc";
         }
-
         tm.beginTransaction();
         if (sortField == null || sortDirection == null) {
             if (search == null) {
@@ -110,7 +100,6 @@ public class PublisherController extends TemplateController<String, Publisher> {
             }
         }
         tm.commitTransaction();
-
         PageResponseDto<DTO<Publisher>> pageResponse = new PageResponseDto<>(DTOs.create(entities, SimplePublisherDto.class), count);
         return pageResponse;
     }

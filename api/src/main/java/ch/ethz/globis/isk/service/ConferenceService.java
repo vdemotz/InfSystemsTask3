@@ -3,7 +3,6 @@ package ch.ethz.globis.isk.service;
 import ch.ethz.globis.isk.domain.Conference;
 import ch.ethz.globis.isk.domain.ConferenceEdition;
 import ch.ethz.globis.isk.util.OrderFilter;
-
 import java.util.List;
 
 public interface ConferenceService extends BaseService<String, Conference> {

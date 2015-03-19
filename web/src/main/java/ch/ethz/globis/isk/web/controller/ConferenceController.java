@@ -1,12 +1,7 @@
 package ch.ethz.globis.isk.web.controller;
 
-import ch.ethz.globis.isk.domain.Conference;
-import ch.ethz.globis.isk.domain.ConferenceEdition;
-import ch.ethz.globis.isk.domain.InProceedings;
-import ch.ethz.globis.isk.service.BaseService;
-import ch.ethz.globis.isk.service.ConferenceEditionService;
-import ch.ethz.globis.isk.service.ConferenceService;
-import ch.ethz.globis.isk.service.InProceedingsService;
+import ch.ethz.globis.isk.domain.*;
+import ch.ethz.globis.isk.service.*;
 import ch.ethz.globis.isk.util.Order;
 import ch.ethz.globis.isk.util.OrderFilter;
 import ch.ethz.globis.isk.web.model.*;

@@ -1,8 +1,7 @@
 package ch.ethz.globis.isk.service;
 
-import ch.ethz.globis.isk.domain.Publication;
+import ch.ethz.globis.isk.domain.*;
 import ch.ethz.globis.isk.util.OrderFilter;
-
 import java.util.List;
 
 public interface PublicationService extends BaseService<String, Publication> {

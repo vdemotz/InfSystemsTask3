@@ -4,17 +4,6 @@ XML_FILE='dblp_filtered.xml'
 #If this is set to true, the port 5005 will be open for debugging
 DEBUG=false
 
-#Check which parser to use
-PARSER=""
-if [ -z "$1" ] 
-then
-    PARSER='non-xml-parser'
-else 
-    PARSER=$1
-fi
-echo 'Parser used: '$PARSER
-
-
 PRINT_GC_OPTION='-XX:+PrintGC'
 
 #Java options
@@ -26,6 +15,6 @@ if $DEBUG ; then
     JAVA_OPTS=$JAVA_OPTS" "$DEBUG_OPTS
 fi
 
-java -jar $JAVA_OPTS './dblp-parser/target/dblp-parser-1.0.0.jar' $XML_FILE $PARSER
+java -jar $JAVA_OPTS './dblp-parser/target/dblp-parser-1.0.0.jar' $XML_FILE
 
 #usage java -jar -Xmx1G -XX:+UseConcMarkSweepGC -XX:+PrintGC -DentityExpansionLimit=10000000 ./dblp-parser/target/dblp-parser-1.0.0.jar <path to xml>

@@ -6,12 +6,17 @@ import ch.ethz.globis.isk.web.utils.EncodingUtils;
 public class JournalEditionDto extends DTO<JournalEdition> {
 
     private String id;
+
     private Integer year;
+
     private String volume;
+
     private String number;
+
     private SimpleJournalDto journal;
 
-    public JournalEditionDto() { }
+    public JournalEditionDto() {
+    }
 
     public JournalEditionDto(JournalEdition edition) {
         this.id = EncodingUtils.encode(edition.getId());

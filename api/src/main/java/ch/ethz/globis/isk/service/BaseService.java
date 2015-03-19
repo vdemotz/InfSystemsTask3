@@ -3,7 +3,6 @@ package ch.ethz.globis.isk.service;
 import ch.ethz.globis.isk.domain.DomainObject;
 import ch.ethz.globis.isk.util.Filter;
 import ch.ethz.globis.isk.util.OrderFilter;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;

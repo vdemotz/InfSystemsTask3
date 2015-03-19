@@ -2,7 +2,6 @@ package ch.ethz.globis.isk.service;
 
 import ch.ethz.globis.isk.domain.Person;
 import ch.ethz.globis.isk.util.OrderFilter;
-
 import java.util.List;
 
 public interface PersonService extends BaseService<String, Person> {

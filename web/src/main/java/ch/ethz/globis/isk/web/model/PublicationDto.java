@@ -1,51 +1,59 @@
 package ch.ethz.globis.isk.web.model;
 
-
 import ch.ethz.globis.isk.domain.*;
 import ch.ethz.globis.isk.web.utils.EncodingUtils;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class PublicationDto<T extends Publication> extends DTO<T> {
 
-    @NotEmpty
     private String id;
 
     private List<DTO<Person>> authors;
+
     private List<DTO<Person>> editors;
 
-    @NotEmpty
     private String title;
+
     private String url;
 
-    @Max(2014L)
-    @Min(1901L)
-    @NotNull
     private Integer year;
+
     private Integer month;
+
     private String note;
+
     private Integer number;
+
     private String pages;
+
     private String ee;
+
     private String volume;
+
     private String isbn;
+
     private DTO<Journal> journal;
+
     private DTO<JournalEdition> journalEdition;
+
     private DTO<ConferenceEdition> conferenceEdition;
+
     private DTO<Publication> book;
+
     private DTO<Publication> proceedings;
+
     private DTO<Publisher> publisher;
+
     private DTO<Series> series;
+
     private DTO<School> school;
+
     private List<DTO<Publication>> children;
 
-    public PublicationDto() { }
+    public PublicationDto() {
+    }
 
     public PublicationDto(Article publication) {
         String id = EncodingUtils.encode(publication.getId());
@@ -56,7 +64,6 @@ public class PublicationDto<T extends Publication> extends DTO<T> {
         setYear(publication.getYear());
         setPages(publication.getPages());
         setEe(publication.getElectronicEdition());
-
         setJournalEdition(DTOs.one(publication.getJournalEdition(), JournalEditionDto.class));
     }
 
@@ -73,7 +80,6 @@ public class PublicationDto<T extends Publication> extends DTO<T> {
         setIsbn(publication.getIsbn());
         setPublisher(DTOs.one(publication.getPublisher(), SimplePublisherDto.class));
         setSeries(DTOs.one(publication.getSeries(), SimpleSeriesDto.class));
-
         Set<Publication> children = new HashSet<Publication>(publication.getPublications());
         setChildren(DTOs.create(children, PublicationDto.class));
     }
@@ -88,7 +94,6 @@ public class PublicationDto<T extends Publication> extends DTO<T> {
         setNote(publication.getNote());
         setPages(publication.getPages());
         setEe(publication.getElectronicEdition());
-
         setBook(DTOs.one(publication.getParentPublication(), ParentPublicationDto.class));
     }
 
@@ -116,7 +121,6 @@ public class PublicationDto<T extends Publication> extends DTO<T> {
         setEditors(DTOs.create(publication.getEditors(), SimplePersonDto.class));
         setTitle(publication.getTitle());
         setYear(publication.getYear());
-
         setSchool(DTOs.one(publication.getSchool(), SimpleSchoolDto.class));
     }
 
@@ -133,7 +137,6 @@ public class PublicationDto<T extends Publication> extends DTO<T> {
         setEe(publication.getElectronicEdition());
         setIsbn(publication.getIsbn());
         setPublisher(DTOs.one(publication.getPublisher(), SimplePublisherDto.class));
-
         setSchool(DTOs.one(publication.getSchool(), SimpleSchoolDto.class));
     }
 
@@ -152,7 +155,6 @@ public class PublicationDto<T extends Publication> extends DTO<T> {
         setPublisher(DTOs.one(publication.getPublisher(), SimplePublisherDto.class));
         setSeries(DTOs.one(publication.getSeries(), SimpleSeriesDto.class));
         setConferenceEdition(DTOs.one(publication.getConferenceEdition(), ConferenceEditionDto.class));
-
         Set<Publication> children = new HashSet<Publication>(publication.getPublications());
         setChildren(DTOs.create(children, PublicationDto.class));
     }

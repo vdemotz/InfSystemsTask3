@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,13 +56,10 @@ public class SeriesController extends TemplateController<String, Series> {
     @Override
     protected void addAdditionalDataAboutEntity(Model model, Series entity) {
         String seriesId = entity.getId();
-
         tm.beginTransaction();
         List<Publication> publications = publicationService.findBySeriesOrderedByYear(seriesId);
-        List<DTO<Publication>> publicationDtoList =
-                DTOs.create(publications, PublicationDto.class);
+        List<DTO<Publication>> publicationDtoList = DTOs.create(publications, PublicationDto.class);
         tm.commitTransaction();
-
         model.addAttribute("publications", publicationDtoList);
         LOG.info("Showing " + publicationDtoList.size() + " publications for " + entity.getName());
     }
@@ -74,22 +70,14 @@ public class SeriesController extends TemplateController<String, Series> {
     }
 
     @ResponseBody
-    @RequestMapping(value = {"/ajax"}, method = RequestMethod.GET)
-    public PageResponseDto<DTO<Series>> getSeriesByAjaxJSON(
-            HttpSession session,
-            @RequestParam(value = "search", required = false) String search,
-            @RequestParam(value = "start", defaultValue = "0") Integer start,
-            @RequestParam(value = "size", defaultValue = "20") Integer size,
-            @RequestParam(value = "sortProperty", required = false) String sortField,
-            @RequestParam(value = "sortDirection", required = false) String sortDirection) {
+    @RequestMapping(value = { "/ajax" }, method = RequestMethod.GET)
+    public PageResponseDto<DTO<Series>> getSeriesByAjaxJSON(HttpSession session, @RequestParam(value = "search", required = false) String search, @RequestParam(value = "start", defaultValue = "0") Integer start, @RequestParam(value = "size", defaultValue = "20") Integer size, @RequestParam(value = "sortProperty", required = false) String sortField, @RequestParam(value = "sortDirection", required = false) String sortDirection) {
         List<Series> entities = null;
         long count;
-
         if (sortField == null) {
             sortField = "name";
             sortDirection = "asc";
         }
-
         tm.beginTransaction();
         if (sortField == null || sortDirection == null) {
             if (search == null) {

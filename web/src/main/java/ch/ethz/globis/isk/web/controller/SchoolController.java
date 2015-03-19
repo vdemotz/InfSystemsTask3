@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +61,6 @@ public class SchoolController extends TemplateController<String, School> {
         List<DTO<Publication>> publicationDtoList = DTOs.create(publications, PublicationDto.class);
         model.addAttribute("publications", publicationDtoList);
         tm.commitTransaction();
-
         LOG.info("Showing " + publicationDtoList.size() + " publications for " + entity.getName());
     }
 
@@ -72,22 +70,14 @@ public class SchoolController extends TemplateController<String, School> {
     }
 
     @ResponseBody
-    @RequestMapping(value = {"/ajax"}, method = RequestMethod.GET)
-    public PageResponseDto<DTO<School>> getSchoolByAjaxJSON(
-            HttpSession session,
-            @RequestParam(value = "search", required = false) String search,
-            @RequestParam(value = "start", defaultValue = "0") Integer start,
-            @RequestParam(value = "size", defaultValue = "20") Integer size,
-            @RequestParam(value = "sortProperty", required = false) String sortField,
-            @RequestParam(value = "sortDirection", required = false) String sortDirection) {
+    @RequestMapping(value = { "/ajax" }, method = RequestMethod.GET)
+    public PageResponseDto<DTO<School>> getSchoolByAjaxJSON(HttpSession session, @RequestParam(value = "search", required = false) String search, @RequestParam(value = "start", defaultValue = "0") Integer start, @RequestParam(value = "size", defaultValue = "20") Integer size, @RequestParam(value = "sortProperty", required = false) String sortField, @RequestParam(value = "sortDirection", required = false) String sortDirection) {
         List<School> entities = null;
         long count;
-
         if (sortField == null) {
             sortField = "name";
             sortDirection = "asc";
         }
-
         tm.beginTransaction();
         if (sortField == null || sortDirection == null) {
             if (search == null) {
@@ -109,7 +99,6 @@ public class SchoolController extends TemplateController<String, School> {
                 count = schoolService.countByName(search);
             }
         }
-
         tm.commitTransaction();
         PageResponseDto<DTO<School>> pageResponse = new PageResponseDto<>(DTOs.create(entities, SimpleSchoolDto.class), count);
         return pageResponse;

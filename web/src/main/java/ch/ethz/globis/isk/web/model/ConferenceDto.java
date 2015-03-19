@@ -3,13 +3,14 @@ package ch.ethz.globis.isk.web.model;
 import ch.ethz.globis.isk.domain.Conference;
 import ch.ethz.globis.isk.domain.ConferenceEdition;
 import ch.ethz.globis.isk.web.utils.EncodingUtils;
-
 import java.util.List;
 
 public class ConferenceDto extends DTO<Conference> {
 
     private String id;
+
     private String name;
+
     private List<DTO<ConferenceEdition>> editions;
 
     public ConferenceDto() {
