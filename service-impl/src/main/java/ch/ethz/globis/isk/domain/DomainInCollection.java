@@ -3,10 +3,7 @@ package ch.ethz.globis.isk.domain;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.Book;
-import ch.ethz.globis.isk.domain.InCollection;
-
-@Document 
+@Document(collection = "publication")
 public class DomainInCollection extends DomainPublication implements InCollection {
 
     private String note;

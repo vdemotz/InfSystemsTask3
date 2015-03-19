@@ -6,10 +6,7 @@ import java.util.Set;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.Person;
-import ch.ethz.globis.isk.domain.Publication;
-
-@Document 
+@Document(collection = "publication")
 public class DomainPublication extends DomainDomainObject implements Publication {
 
     private String title;

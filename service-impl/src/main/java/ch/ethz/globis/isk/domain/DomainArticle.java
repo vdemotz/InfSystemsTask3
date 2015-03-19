@@ -3,10 +3,7 @@ package ch.ethz.globis.isk.domain;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.Article;
-import ch.ethz.globis.isk.domain.JournalEdition;
-
-@Document
+@Document(collection = "publication")
 public class DomainArticle extends DomainPublication implements Article {
 
     private String cdrom;

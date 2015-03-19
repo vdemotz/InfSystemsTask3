@@ -4,10 +4,7 @@ package ch.ethz.globis.isk.domain;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.InProceedings;
-import ch.ethz.globis.isk.domain.Proceedings;
-
-@Document 
+@Document(collection = "publication")
 public class DomainInProceedings extends DomainPublication implements InProceedings {
 
     private String note;

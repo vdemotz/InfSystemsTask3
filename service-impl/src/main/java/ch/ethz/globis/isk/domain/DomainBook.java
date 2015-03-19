@@ -7,12 +7,7 @@ import java.util.Set;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.Book;
-import ch.ethz.globis.isk.domain.InCollection;
-import ch.ethz.globis.isk.domain.Publisher;
-import ch.ethz.globis.isk.domain.Series;
-
-@Document
+@Document(collection = "publication")
 public class DomainBook extends DomainPublication implements Book {
 
     private String cdrom;
