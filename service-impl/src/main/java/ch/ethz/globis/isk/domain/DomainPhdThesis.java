@@ -3,11 +3,7 @@ package ch.ethz.globis.isk.domain;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.PhdThesis;
-import ch.ethz.globis.isk.domain.Publisher;
-import ch.ethz.globis.isk.domain.School;
-
-@Document 
+@Document(collection = "publication")
 public class DomainPhdThesis extends DomainPublication implements PhdThesis {
 
     private Integer month;

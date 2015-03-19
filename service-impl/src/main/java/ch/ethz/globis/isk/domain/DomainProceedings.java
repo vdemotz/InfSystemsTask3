@@ -6,13 +6,7 @@ import java.util.Set;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.ConferenceEdition;
-import ch.ethz.globis.isk.domain.InProceedings;
-import ch.ethz.globis.isk.domain.Proceedings;
-import ch.ethz.globis.isk.domain.Publisher;
-import ch.ethz.globis.isk.domain.Series;
-
-@Document 
+@Document(collection = "publication")
 public class DomainProceedings extends DomainPublication implements Proceedings {
 
     private String note;
