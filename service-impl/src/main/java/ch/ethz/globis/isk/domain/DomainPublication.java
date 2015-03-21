@@ -81,7 +81,7 @@ public class DomainPublication extends DomainDomainObject implements Publication
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Publication)) return false;
+        if (o.getClass() != this.getClass()) return false;
 
         Publication that = (Publication) o;
 

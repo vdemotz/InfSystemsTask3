@@ -10,7 +10,7 @@ public class DomainInProceedings extends DomainPublication implements InProceedi
     private String note;
     private String pages;
 
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private Proceedings proceedings;
 
     public DomainInProceedings() {}

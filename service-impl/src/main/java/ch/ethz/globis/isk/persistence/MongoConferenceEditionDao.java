@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import ch.ethz.globis.isk.domain.Conference;
 import ch.ethz.globis.isk.domain.ConferenceEdition;
 import ch.ethz.globis.isk.domain.DomainConferenceEdition;
-import ch.ethz.globis.isk.domain.JournalEdition;
 
 @Repository
 public class MongoConferenceEditionDao extends MongoDao<String, ConferenceEdition> implements ConferenceEditionDao {
@@ -40,8 +39,7 @@ public class MongoConferenceEditionDao extends MongoDao<String, ConferenceEditio
     private static class SortByYearAscendingComparator implements Comparator<ConferenceEdition>{
     	@Override
 		public int compare(ConferenceEdition o1, ConferenceEdition o2) {
-    		int compare = o1.getYear().compareTo(o2.getYear());
-			return compare;
+    		return o1.getYear().compareTo(o2.getYear());
 		}
     }
 }

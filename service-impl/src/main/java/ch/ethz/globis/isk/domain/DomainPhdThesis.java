@@ -11,10 +11,10 @@ public class DomainPhdThesis extends DomainPublication implements PhdThesis {
     private Integer number;
     private String isbn;
 
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private Publisher publisher;
     
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private School school;
 
     public DomainPhdThesis() {

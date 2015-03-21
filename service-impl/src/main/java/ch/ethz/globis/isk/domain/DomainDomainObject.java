@@ -18,5 +18,14 @@ public class DomainDomainObject implements DomainObject {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		if (o.getClass() != this.getClass()){
+			return false;
+		}
+		DomainObject other = (DomainObject)o;
+		return other.getId().equals(id);
+	}
 
 }

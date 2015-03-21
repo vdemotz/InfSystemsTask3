@@ -9,7 +9,7 @@ public class DomainArticle extends DomainPublication implements Article {
     private String cdrom;
     private String pages;
 
-    @DBRef(lazy=true)
+    @DBRef(lazy=false)
     private JournalEdition journalEdition;
 
     public DomainArticle() {};

@@ -9,7 +9,7 @@ public class DomainInCollection extends DomainPublication implements InCollectio
     private String note;
     private String pages;
     
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private Book parentPublication;
 
     public DomainInCollection() { }

@@ -1,13 +1,49 @@
 package ch.ethz.globis.isk.test.service;
 
-import ch.ethz.globis.isk.domain.*;
-import ch.ethz.globis.isk.service.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.Arrays;
-import java.util.List;
-import static org.junit.Assert.*;
+
+import ch.ethz.globis.isk.domain.Article;
+import ch.ethz.globis.isk.domain.Book;
+import ch.ethz.globis.isk.domain.Conference;
+import ch.ethz.globis.isk.domain.ConferenceEdition;
+import ch.ethz.globis.isk.domain.InCollection;
+import ch.ethz.globis.isk.domain.InProceedings;
+import ch.ethz.globis.isk.domain.Journal;
+import ch.ethz.globis.isk.domain.JournalEdition;
+import ch.ethz.globis.isk.domain.MasterThesis;
+import ch.ethz.globis.isk.domain.Person;
+import ch.ethz.globis.isk.domain.PhdThesis;
+import ch.ethz.globis.isk.domain.Proceedings;
+import ch.ethz.globis.isk.domain.Publication;
+import ch.ethz.globis.isk.domain.Publisher;
+import ch.ethz.globis.isk.domain.School;
+import ch.ethz.globis.isk.domain.Series;
+import ch.ethz.globis.isk.service.ArticleService;
+import ch.ethz.globis.isk.service.BookService;
+import ch.ethz.globis.isk.service.ConferenceEditionService;
+import ch.ethz.globis.isk.service.ConferenceService;
+import ch.ethz.globis.isk.service.InCollectionService;
+import ch.ethz.globis.isk.service.InProceedingsService;
+import ch.ethz.globis.isk.service.JournalEditionService;
+import ch.ethz.globis.isk.service.JournalService;
+import ch.ethz.globis.isk.service.MasterThesisService;
+import ch.ethz.globis.isk.service.PersonService;
+import ch.ethz.globis.isk.service.PhdThesisService;
+import ch.ethz.globis.isk.service.ProceedingsService;
+import ch.ethz.globis.isk.service.PublicationService;
+import ch.ethz.globis.isk.service.PublisherService;
+import ch.ethz.globis.isk.service.SchoolService;
+import ch.ethz.globis.isk.service.SeriesService;
+import ch.ethz.globis.isk.service.TransactionManager;
 
 public class PublicationServiceTest {
 

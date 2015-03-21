@@ -15,10 +15,10 @@ public class DomainBook extends DomainPublication implements Book {
     private String volume;
     private String isbn;
 
-    @DBRef(lazy=true)
+    @DBRef(lazy=false)
     private Series series;
 
-    @DBRef(lazy=true)
+    @DBRef(lazy=false)
     private Publisher publisher;
 
     @DBRef(lazy=true)

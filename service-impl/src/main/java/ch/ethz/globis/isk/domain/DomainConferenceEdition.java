@@ -3,17 +3,13 @@ package ch.ethz.globis.isk.domain;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.Conference;
-import ch.ethz.globis.isk.domain.ConferenceEdition;
-import ch.ethz.globis.isk.domain.Proceedings;
-
 @Document 
 public class DomainConferenceEdition extends DomainDomainObject implements ConferenceEdition {
 
 	
     private Integer year;
     
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private Conference conference;
 
     @DBRef(lazy = true)

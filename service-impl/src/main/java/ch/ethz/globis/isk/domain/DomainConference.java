@@ -6,9 +6,6 @@ import java.util.Set;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.Conference;
-import ch.ethz.globis.isk.domain.ConferenceEdition;
-
 
 @Document 
 public class DomainConference extends DomainDomainObject implements Conference {

@@ -6,10 +6,6 @@ import java.util.Set;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ch.ethz.globis.isk.domain.Article;
-import ch.ethz.globis.isk.domain.Journal;
-import ch.ethz.globis.isk.domain.JournalEdition;
-
 @Document 
 public class DomainJournalEdition extends DomainDomainObject implements JournalEdition {
 
@@ -18,7 +14,7 @@ public class DomainJournalEdition extends DomainDomainObject implements JournalE
     private String volume;
     private Integer year;
 
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private Journal journal;
 
     @DBRef(lazy = true)

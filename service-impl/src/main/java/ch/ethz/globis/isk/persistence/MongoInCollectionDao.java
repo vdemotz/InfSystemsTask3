@@ -2,7 +2,6 @@ package ch.ethz.globis.isk.persistence;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import ch.ethz.globis.isk.domain.Book;
 import ch.ethz.globis.isk.domain.DomainInCollection;
 import ch.ethz.globis.isk.domain.InCollection;
-import ch.ethz.globis.isk.domain.JournalEdition;
+import ch.ethz.globis.isk.persistence.MongoPublicationDao.SortByYearAscendingComparator;
 import ch.ethz.globis.isk.util.Filter;
 import ch.ethz.globis.isk.util.Operator;
 
@@ -47,12 +46,6 @@ public class MongoInCollectionDao extends MongoDao<String, InCollection> impleme
     public InCollection createEntity() {
         return new DomainInCollection();
     }
-    
-    private static class SortByYearAscendingComparator implements Comparator<InCollection>{
-    	@Override
-		public int compare(InCollection o1, InCollection o2) {
-    		return o1.getYear().compareTo(o2.getYear());
-		}
-    }
+
 
 }

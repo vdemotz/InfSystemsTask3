@@ -14,13 +14,13 @@ public class DomainProceedings extends DomainPublication implements Proceedings 
     private String volume;
     private String isbn;
 
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private Publisher publisher;
 
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private Series series;
 
-    @DBRef(lazy = true)
+    @DBRef(lazy = false)
     private ConferenceEdition conferenceEdition;
 
     @DBRef(lazy = true)

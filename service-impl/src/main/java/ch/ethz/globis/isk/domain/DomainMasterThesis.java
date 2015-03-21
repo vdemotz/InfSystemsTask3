@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "publication")
 public class DomainMasterThesis extends DomainPublication implements MasterThesis {
 
-	@DBRef(lazy = true)
+	@DBRef(lazy = false)
 	private School school;
 
     public DomainMasterThesis() { }
