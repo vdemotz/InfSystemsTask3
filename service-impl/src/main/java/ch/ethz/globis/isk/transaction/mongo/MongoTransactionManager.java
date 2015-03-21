@@ -1,6 +1,8 @@
-package ch.ethz.globis.isk.transaction;
+package ch.ethz.globis.isk.transaction.mongo;
 
 import org.springframework.stereotype.Component;
+
+import ch.ethz.globis.isk.transaction.CacheAwareTransactionManager;
 
 @Component
 public class MongoTransactionManager extends CacheAwareTransactionManager {

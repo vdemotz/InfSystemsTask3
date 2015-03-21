@@ -1,20 +1,28 @@
 package ch.ethz.globis.isk.persistence;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ch.ethz.globis.isk.domain.Book;
 import ch.ethz.globis.isk.domain.DomainInCollection;
 import ch.ethz.globis.isk.domain.InCollection;
-import ch.ethz.globis.isk.persistence.InCollectionDao;
+import ch.ethz.globis.isk.domain.JournalEdition;
 import ch.ethz.globis.isk.util.Filter;
 import ch.ethz.globis.isk.util.Operator;
 
 @Repository
 public class MongoInCollectionDao extends MongoDao<String, InCollection> implements InCollectionDao {
 
+	@Autowired
+	BookDao bookDao;
+	
     @Override
     public InCollection findOneByTitle(String title) {
         Map<String, Filter> filterMap = new HashMap<>();
@@ -24,8 +32,10 @@ public class MongoInCollectionDao extends MongoDao<String, InCollection> impleme
 
     @Override
     public List<InCollection> findByBookIdOrderByYear(String bookId) {
-    	return null;
-        //TODO return queryByReferenceIdOrderByYear("InCollection", "parentPublication", bookId);
+    	Book book = bookDao.findOne(bookId);
+        List<InCollection> pubs = new ArrayList<InCollection>(book.getPublications());
+        Collections.sort(pubs, new SortByYearAscendingComparator());
+    	return pubs;
     }
 
     @Override
@@ -36,6 +46,13 @@ public class MongoInCollectionDao extends MongoDao<String, InCollection> impleme
     @Override
     public InCollection createEntity() {
         return new DomainInCollection();
+    }
+    
+    private static class SortByYearAscendingComparator implements Comparator<InCollection>{
+    	@Override
+		public int compare(InCollection o1, InCollection o2) {
+    		return o1.getYear().compareTo(o2.getYear());
+		}
     }
 
 }
